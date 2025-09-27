@@ -9,7 +9,11 @@ Not sure where to get started? It might be useful to start by creating a variabl
 */
 
 const checkAir = function (samples, threshold) {
-  // Code here!
+  const dirtyCnt = samples.reduce(
+    (cnt, e) => (e === "dirty" ? cnt + 1 : cnt),
+    0
+  );
+  return dirtyCnt / samples.length < threshold ? "Clean" : "Polluted";
 };
 
 console.log(

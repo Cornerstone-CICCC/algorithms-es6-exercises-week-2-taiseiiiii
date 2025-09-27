@@ -9,7 +9,45 @@ Create a function named talkingCalendar that takes in a date string with the for
 */
 
 const talkingCalendar = function (date) {
-  // Your code here
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const getOrdinal = (num) => {
+    const n = parseInt(num);
+    if (n % 100 >= 11 && n % 100 <= 13) {
+      return n + "th";
+    }
+    switch (n % 10) {
+      case 1:
+        return n + "st";
+      case 2:
+        return n + "nd";
+      case 3:
+        return n + "rd";
+      default:
+        return n + "th";
+    }
+  };
+
+  const [year, month, day] = date.split("/");
+
+  const monthName = months[parseInt(month) - 1];
+
+  const dayOrdinal = getOrdinal(day);
+
+  return `${monthName} ${dayOrdinal}, ${year}`;
 };
 
 console.log(talkingCalendar("2017/12/02")); // December 2nd, 2017

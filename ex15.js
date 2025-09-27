@@ -9,7 +9,13 @@ Create a function named organizeInstructors that will receive an array of instru
 */
 
 const organizeInstructors = function (instructors) {
-  // Put your solution here
+  return instructors.reduce((newObject, element) => {
+    if (!newObject[element.course]) {
+      newObject[element.course] = [];
+    }
+    newObject[element.course].push(element.name);
+    return newObject;
+  }, {});
 };
 
 console.log(

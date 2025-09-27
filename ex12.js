@@ -21,7 +21,15 @@ This one is a doozy! We might want to start by creating a helper function called
 */
 
 const chooseRecipe = function (bakeryA, bakeryB, recipes) {
-  // Code here!
+  return recipes.find(
+    (r) =>
+      ingredientCheck(bakeryA, r.ingredients) &&
+      ingredientCheck(bakeryB, r.ingredients)
+  ).name;
+};
+
+const ingredientCheck = (bakery, recipe) => {
+  return recipe.some((e) => bakery.includes(e));
 };
 
 let bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];

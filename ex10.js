@@ -8,11 +8,30 @@ Create a function named multiplicationTable that receives a number maxValue as i
 */
 
 const multiplicationTable = function (maxValue) {
-  // Your code here
+  const createRes = (target) => {
+    if (target > maxValue) {
+      return;
+    }
+    let str = "";
+    for (let i = target; i <= maxValue * target; i += target) {
+      str += i;
+      if (i < maxValue * target) {
+        str += " ";
+      }
+    }
+    const nextLines = createRes(target + 1);
+    return str + (nextLines ? "\n" + nextLines : "");
+  };
+
+  return createRes(1);
 };
+
+console.log("---------sample1---------------");
 
 console.log(multiplicationTable(1));
 // 1
+
+console.log("---------sample2---------------");
 
 console.log(multiplicationTable(5));
 // 1 2 3 4 5
@@ -20,6 +39,8 @@ console.log(multiplicationTable(5));
 // 3 6 9 12 15
 // 4 8 12 16 20
 // 5 10 15 20 25
+
+console.log("---------sample3---------------");
 
 console.log(multiplicationTable(10));
 // 1 2 3 4 5 6 7 8 9 10

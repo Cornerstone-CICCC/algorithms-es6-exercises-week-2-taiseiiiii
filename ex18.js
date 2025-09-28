@@ -23,7 +23,29 @@ Create a function named squareCode that will receive a message, and return the s
 */
 
 const squareCode = function (message) {
-  // Put your solution here
+  const text = message.replace(/\s+/g, "");
+  const colCnt = Math.ceil(Math.sqrt(text.length));
+  const table = [];
+  let res = "";
+  const createTable = (i) => {
+    if (!text[i]) {
+      return;
+    }
+    const nextStart = i + colCnt;
+    table.push([...text.slice(i, nextStart)]);
+    createTable(nextStart);
+  };
+
+  createTable(0);
+
+  for (let i = 0; i < colCnt; i++) {
+    for (let j = 0; j < table.length; j++) {
+      res += table[j][i] || "";
+    }
+    res += " ";
+  }
+
+  return res.trim();
 };
 
 console.log(squareCode("chill out")); // clu hlt io
